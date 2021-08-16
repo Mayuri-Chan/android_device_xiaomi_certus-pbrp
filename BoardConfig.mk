@@ -58,12 +58,18 @@ TW_EXCLUDE_TWRPAPP := true
 TW_INCLUDE_NTFS_3G := true
 TW_INCLUDE_CRYPTO := true
 TW_THEME := portrait_hdpi
+TW_FORCE_USE_BUSYBOX := true
 
 TW_RECOVERY_ADDITIONAL_RELINK_FILES += \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw/android.hardware.keymaster@3.0-impl.so \
     $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/android.hardware.keymaster@3.0-service \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libkeymaster3device.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+
+# PBRP Build Flags
+PB_DISABLE_DEFAULT_DM_VERITY := true
+PB_DISABLE_DEFAULT_TREBLE_COMP := true
+#PB_TORCH_PATH := /sys/class/leds/flashlight
 
 # Vendor
 TARGET_INIT_VENDOR_LIB := libinit_certus
