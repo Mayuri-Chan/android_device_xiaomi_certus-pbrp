@@ -1,0 +1,21 @@
+on property:ro.crypto.state=encrypted
+    start teei_daemon
+    start keymaster-3-0
+
+on property:twrp.all.users.decrypted=true
+    stop teei_daemon
+    stop keymaster-3-0
+
+service teei_daemon /system/bin/teei_daemon
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+service keymaster-3-0 /system/bin/android.hardware.keymaster@3.0-service
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0

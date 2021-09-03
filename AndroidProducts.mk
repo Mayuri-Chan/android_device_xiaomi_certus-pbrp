@@ -1,0 +1,3 @@
+CERTUS_PREBUILT_KERNEL := true
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/omni_certus.mk
+COMMON_LUNCH_CHOICES := omni_certus-eng
