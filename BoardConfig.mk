@@ -36,13 +36,7 @@ BOARD_MKBOOTIMG_ARGS := \
     --base 0x40078000 \
     --pagesize 2048
 
-ifeq ($(CERTUS_PREBUILT_KERNEL),true)
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
-else
-TARGET_KERNEL_SOURCE := kernel/xiaomi/certus
-TARGET_KERNEL_CONFIG := certus_defconfig
-TARGET_KERNEL_CLANG_COMPILE := true
-endif
 
 # Partitons
 BOARD_CERTUS_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor
@@ -81,6 +75,9 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw/android.hardware.keymaster@3.0-impl.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libkeymaster3device.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+
+# system.prop
+TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 
 # Vendor
 PLATFORM_SECURITY_PATCH := 2099-12-31

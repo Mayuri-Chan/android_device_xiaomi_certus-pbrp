@@ -6,7 +6,7 @@ on property:twrp.all.users.decrypted=true
     stop teei_daemon
     stop keymaster-3-0
 
-service teei_daemon /system/bin/teei_daemon
+service teei_daemon /sbin/teei_daemon
     user root
     group root
     disabled

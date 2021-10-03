@@ -1,14 +1,18 @@
-ifneq ($(CERTUS_32_BUILD),true)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-endif
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
-$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/pb/config/common.mk)
 
-# Inherit from certus device
-$(call inherit-product, device/xiaomi/certus/device.mk)
+DEVICE_PATH := device/xiaomi/certus
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/recovery/root,recovery/root)
 
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_NAME := omni_certus
 PRODUCT_MODEL := Redmi 6/A
 PRODUCT_DEVICE := certus
 PRODUCT_BRAND := Xiaomi
+
+# Dynamic partitions
+PRODUCT_RETROFIT_DYNAMIC_PARTITIONS := true
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
